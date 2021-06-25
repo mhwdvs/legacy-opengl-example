@@ -1,6 +1,5 @@
 # Build glad2
-add_subdirectory(glad/cmake)
-glad_add_library(glad SHARED API gl:core=4.5 LOCATION ${CMAKE_BINARY_DIR}/src)
+# Configure python for glad
 find_package(Python3 REQUIRED)
 if(${Python3_VERSION} LESS 3.6)
     # python version too low, throw error
@@ -10,6 +9,9 @@ else()
 endif()
 
 execute_process(COMMAND  "pip install .") # install python requirements
+
+add_subdirectory(glad/cmake)
+glad_add_library(glad SHARED API gl:core=4.5)
 
 # Build glfw
 include_directories(${PROJECT_SOURCE_DIR}/glfw)

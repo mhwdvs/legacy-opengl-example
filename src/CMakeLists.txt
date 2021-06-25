@@ -13,9 +13,9 @@ add_library(${CMAKE_PROJECT_NAME}_lib SHARED STATIC ${SOURCES})
 target_link_libraries(${CMAKE_PROJECT_NAME} glad glfw)
 target_link_libraries(${CMAKE_PROJECT_NAME}_lib glad glfw)
 
-# Output SDL2 DLL to this dir
+# Output glad DLL to this dir
 if(WIN32) #or CYGWIN) 
-    #set_target_properties(SDL2 PROPERTIES
-    #                      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    #)
+    set_target_properties(glad PROPERTIES
+                          RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
 endif()
