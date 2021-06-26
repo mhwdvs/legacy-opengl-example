@@ -61,9 +61,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install clang-format
-        run: sudo apt install clang-format-12
+        run: sudo apt install clang-format
 
       - name: Run clang-format
         working-directory: src
         shell: bash
-        run: find . -regex '.*\.\(h\|c\|cpp\)' -exec clang-format --style=file --Werror {} \;
+        run: find . -iname *.h -o -iname *.cpp | xargs clang-format --style=file --Werror
