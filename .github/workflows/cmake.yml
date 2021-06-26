@@ -54,3 +54,15 @@ jobs:
         working-directory: ${{github.workspace}}
         shell: bash
         run: cppcheck src/ --enable=all --error-exitcode=1
+
+  Clang-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install clang-format
+        run: sudo apt install clang-format
+
+      - name: Run clang-format
+        working-directory: src
+        run: clang-format --style=file --Werror
