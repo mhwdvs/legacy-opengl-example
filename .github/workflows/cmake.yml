@@ -65,4 +65,5 @@ jobs:
 
       - name: Run clang-format
         working-directory: src
-        run: clang-format --style=file --Werror
+        shell: bash
+        run: find . -regex '.*\.\(h\|c\|cpp\)' -exec clang-format --style=file --Werror {} \;
