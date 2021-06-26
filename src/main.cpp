@@ -25,19 +25,14 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 // The MAIN function, from here we start the application and run the game loop
 int main()
 {
-    std::cout << "Starting GLFW context, OpenGL 3.3" << std::endl;
+    std::cout << "Starting GLFW context, OpenGL 1.2" << std::endl;
     // Init GLFW
     glfwInit();
-    // Set all the required options for GLFW
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr);
     glfwMakeContextCurrent(window);
-    if (window == NULL)
+    if (window == nullptr)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -56,7 +51,7 @@ int main()
     }
 
     // Successfully loaded OpenGL
-    std::cout << "Loaded OpenGL " << GLAD_VERSION_MAJOR(version) << "." << GLAD_VERSION_MINOR(version) << std::endl;
+    std::cout << "Loaded OpenGL " << glGetString(GL_VERSION) << std::endl;
 
     // Define the viewport dimensions
     glViewport(0, 0, WIDTH, HEIGHT);

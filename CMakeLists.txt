@@ -18,22 +18,25 @@ add_subdirectory(test)
 # Set compile options
 target_compile_options(${PROJECT_NAME} PRIVATE 
     # Clang and AppleClang
-    $<$<CXX_COMPILER_ID:Clang>:-v -Wall -Wextra -fsanitize=address,undefined,leak>
+    $<$<AND:$<CXX_COMPILER_ID:Clang>,$<CONFIG:Debug>>: -v -Wall -Wextra -fsanitize=address,undefined,leak>
+    $<$<AND:$<CXX_COMPILER_ID:Clang>,$<CONFIG:Release>>: -v -Wall -Wextra>
 
     # GNU GCC/G++
-    $<$<CXX_COMPILER_ID:GNU>: -Wall -Wextra -pedantic -fsanitize=address,leak>
+    $<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Debug>>: -Wall -Wextra -pedantic -fsanitize=address,leak>
+    $<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Release>>: -Wall -Wextra -pedantic>
 
     # MSVC
-    $<$<CXX_COMPILER_ID:MSVC>:/W4 -fsanitize=address>
+    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>: /W4 -fsanitize=address>
+    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Release>>: /W4>
 )
 
 target_link_options(${PROJECT_NAME} PRIVATE
     # Clang and AppleClang
-    $<$<CXX_COMPILER_ID:Clang>:-fsanitize=address,undefined,leak>
+    $<$<AND:$<CXX_COMPILER_ID:Clang>,$<CONFIG:Debug>>: -fsanitize=address,undefined,leak>
 
     # GNU GCC/G++
-    $<$<CXX_COMPILER_ID:GNU>: -fsanitize=address,leak>
+    $<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Debug>>: -fsanitize=address,leak>
 
     # MSVC
-    $<$<CXX_COMPILER_ID:MSVC>: -fsanitize=address>
+    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>: -fsanitize=address>
 )

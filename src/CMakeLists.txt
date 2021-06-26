@@ -9,7 +9,7 @@ file(COPY ${IMAGES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/img)
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
 # Create library (needed to make code accessible to tests)
 add_library(${CMAKE_PROJECT_NAME}_lib SHARED STATIC ${SOURCES})
-# Link SDL
+# Link glad and glfw
 target_link_libraries(${CMAKE_PROJECT_NAME} gladlib glfw)
 target_link_libraries(${CMAKE_PROJECT_NAME}_lib gladlib glfw)
 
