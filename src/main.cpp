@@ -6,7 +6,6 @@
 // GLFW (include after glad)
 #include <GLFW/glfw3.h>
 
-
 // This example is taken from http://learnopengl.com/
 // http://learnopengl.com/code_viewer.php?code=getting-started/hellowindow2
 // The code originally used GLEW, I replaced it with Glad
@@ -14,26 +13,32 @@
 // Compile:
 // g++ example/c++/hellowindow2.cpp -Ibuild/include build/src/gl.c -lglfw -ldl
 
-
 // Function prototypes
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void key_callback(GLFWwindow* window,
+                  int key,
+                  int scancode,
+                  int action,
+                  int mode);
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
 
-
 // The MAIN function, from here we start the application and run the game loop
-int main()
-{
+int main() {
     std::cout << "Starting GLFW context, OpenGL 1.2" << std::endl;
     // Init GLFW
     glfwInit();
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH,
+                                          HEIGHT,
+                                          "LearnOpenGL",
+                                          nullptr,
+                                          nullptr);
+
     glfwMakeContextCurrent(window);
-    if (window == nullptr)
-    {
+
+    if (window == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
@@ -44,8 +49,7 @@ int main()
 
     // Load OpenGL functions, gladLoadGL returns the loaded version, 0 on error.
     int version = gladLoadGL(glfwGetProcAddress);
-    if (version == 0)
-    {
+    if (version == 0) {
         std::cout << "Failed to initialize OpenGL context" << std::endl;
         return -1;
     }
@@ -57,9 +61,9 @@ int main()
     glViewport(0, 0, WIDTH, HEIGHT);
 
     // Game loop
-    while (!glfwWindowShouldClose(window))
-    {
-        // Check if any events have been activated (key pressed, mouse moved etc.) and call corresponding response functions
+    while (!glfwWindowShouldClose(window)) {
+        // Check if any events have been activated (key pressed, mouse moved
+        // etc.) and call corresponding response functions
         glfwPollEvents();
 
         // Render
@@ -77,8 +81,11 @@ int main()
 }
 
 // Is called whenever a key is pressed/released via GLFW
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
+void key_callback(GLFWwindow* window,
+                  int key,
+                  int scancode,
+                  int action,
+                  int mode) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
 }
