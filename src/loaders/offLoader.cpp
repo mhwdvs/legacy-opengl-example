@@ -1,22 +1,19 @@
 #include "offLoader.h"
 #include <fstream>
+#include <sstream>
 
 using std::getline;
 using std::ifstream;
+using std::stringstream;
 
 // TODO: handle blank lines
 // TODO: handle comments (# ....,
 //                        5, 10, 1 # this is a vert)
 // TODO: handle face colours
 Object readOFFFile(ifstream& file) {
-    // confirm file is OFF format
     string line, discard;
 
     getline(file, line);  // "OFF"
-    if (line != "OFF") {
-        throw std::invalid_argument(
-            "File doesn't fit OFF format: first line does not read \"OFF\"");
-    }
 
     // allocate new object
     Object res;
@@ -35,17 +32,21 @@ Object readOFFFile(ifstream& file) {
     // read in faces
     for (size_t i = 0; i < numFaces; ++i) {
         Object::Face face;
+        getline(file, line);
+        stringstream linestream(line);
 
         // read number of verts in this face
         size_t numVertsinFace = 0;
-        file >> numVertsinFace;
+        linestream >> numVertsinFace;
 
         // read in the index of each vertex (a dynamic number of indices)
         for (size_t j = 0; j < numVertsinFace; ++j) {
             size_t vertIndex = 0;
-            file >> vertIndex;
+            linestream >> vertIndex;
             face.vertexNums.push_back(vertIndex);
         }
+
+        res.addFace(face);
     }
     file.close();
 
