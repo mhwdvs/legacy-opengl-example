@@ -1,4 +1,6 @@
-file(GLOB SOURCES CONFIGURE_DEPENDS "*.h" "*.cpp" "datastructures/*.h" "datastructures/*.cpp" "loaders/*.h" "loaders/*.cpp")
+file(GLOB SOURCES CONFIGURE_DEPENDS "*.h" "*.cpp" 
+                                    "datastructures/*.h" "datastructures/*.cpp" 
+                                    "loaders/*.h" "loaders/*.cpp")
 
 file(GLOB DATA_FILES CONFIGURE_DEPENDS "*.txt" "*.csv")
 file(COPY ${DATA_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

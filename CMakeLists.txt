@@ -15,6 +15,9 @@ add_subdirectory(src)
 # add associated directory for tests executable
 add_subdirectory(test)
 
+# add resources directory to copy files to binary dir
+add_subdirectory(res)
+
 # Set compile options
 target_compile_options(${PROJECT_NAME} PRIVATE 
     # Clang and AppleClang
