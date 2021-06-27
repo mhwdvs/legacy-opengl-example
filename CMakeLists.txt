@@ -29,8 +29,8 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     $<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Release>>: -Wall -Wextra -pedantic>
 
     # MSVC
-    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>: /W4 /MANIFEST:NO -fsanitize=address>
-    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Release>>: /W4 /MANIFEST:NO>
+    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>: /W4 /fsanitize=address>
+    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Release>>: /W4>
 )
 
 target_link_options(${PROJECT_NAME} PRIVATE
@@ -40,6 +40,6 @@ target_link_options(${PROJECT_NAME} PRIVATE
     # GNU GCC/G++
     $<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Debug>>: -fsanitize=address,leak>
 
-    # MSVC
-    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>: -fsanitize=address>
+    # GNU GCC/G++
+    $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>: /INFERASANLIBS>
 )
