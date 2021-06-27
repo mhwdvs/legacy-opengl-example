@@ -3,7 +3,7 @@
 #include "loaders/offLoader.h"
 
 TEST(ObjLoaderTests, TestWithFile) {
-    auto file = openFile("../res/off/unitcube.off");
+    auto file = openFile("res/off/unitcube.off");
     auto obj = readOFFFile(file);
 
     ASSERT_EQ(obj.faces.size(), 6);

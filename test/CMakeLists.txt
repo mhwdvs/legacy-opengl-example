@@ -9,6 +9,8 @@ add_executable(tests ${SOURCES})
 # Include and link against dependencies.
 target_link_libraries(tests PUBLIC ${CMAKE_PROJECT_NAME}_lib)
 
+set_target_properties(tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
 # --- DEPENDENCIES ---
 # Google Test
 # Download and unpack googletest at configure time
