@@ -7,6 +7,10 @@ using std::istringstream;
 TEST(ObjLoaderTests, TestWithFile) {
     auto file = istringstream(
         "OFF\n"
+        "#\n"
+        "#  unitcube.off\n"
+        "#  A unit cube, with RGB face information.\n"
+        "#\n"
         "8 6 12\n"
         "0.0  0.0  0.0\n"
         "1.0  0.0  0.0\n"

@@ -9,25 +9,38 @@ using std::string;
 using std::stringstream;
 
 // TODO: handle blank lines
-// TODO: handle comments (# ....,
-//                        5, 10, 1 # this is a vert)
 // TODO: handle face colours
 Object readOFFFile(istream& file) {
+    // allocate new object
+    Object res;
     string line, discard;
 
     getline(file, line);  // "OFF"
+    if (line == "OFF") {
+        getline(file, line);
+    }
 
-    // allocate new object
-    Object res;
-
+    // keep reading lines until one that isnt a comment
+    while (line[0] == '#') {
+        getline(file, line);
+    }
     // read in off details: nvert nfaces nedges
     size_t numVerts = 0, numFaces = 0;
-    file >> numVerts >> numFaces >> discard;  // discard edges
+    stringstream detailsline(line);
+    detailsline >> numVerts >> numFaces >> discard;  // discard edges
 
     // read in vertices
     for (size_t i = 0; i < numVerts; ++i) {
+        getline(file, line);
+        // keep reading lines until one that isnt a comment
+        while (line[0] == '#') {
+            getline(file, line);
+        }
+
+        stringstream linestream(line);
+
         float x = 0, y = 0, z = 0;
-        file >> x >> y >> z;
+        linestream >> x >> y >> z;
         res.addVertex(Object::Vertex(x, y, z));
     }
 
@@ -35,6 +48,10 @@ Object readOFFFile(istream& file) {
     for (size_t i = 0; i < numFaces; ++i) {
         Object::Face face;
         getline(file, line);
+        // keep reading lines until one that isnt a comment
+        while (line[0] == '#') {
+            getline(file, line);
+        }
         stringstream linestream(line);
 
         // read number of verts in this face
