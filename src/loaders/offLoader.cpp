@@ -1,16 +1,18 @@
 #include "offLoader.h"
 #include <fstream>
 #include <sstream>
+#include <string>
 
 using std::getline;
-using std::ifstream;
+using std::istream;
+using std::string;
 using std::stringstream;
 
 // TODO: handle blank lines
 // TODO: handle comments (# ....,
 //                        5, 10, 1 # this is a vert)
 // TODO: handle face colours
-Object readOFFFile(ifstream& file) {
+Object readOFFFile(istream& file) {
     string line, discard;
 
     getline(file, line);  // "OFF"
@@ -48,7 +50,6 @@ Object readOFFFile(ifstream& file) {
 
         res.addFace(face);
     }
-    file.close();
 
     return res;
 }

@@ -1,8 +1,7 @@
 #pragma once
-#include <string>
+#include <istream>
 #include "../datastructures/object.h"
 
-using std::ifstream;
-using std::string;
+using std::istream;
 
-Object readOFFFile(ifstream& fileName);
+Object readOFFFile(istream& fileName);
