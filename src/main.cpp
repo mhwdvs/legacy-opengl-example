@@ -11,6 +11,7 @@ int main() {
     // Init GLFW
     glfwInit();
 
+    // Window context needed before OpenGL is loaded
     Scene mainScene;
     Window window(WIDTH, HEIGHT, "Legacy OpenGL Example", mainScene);
 
@@ -20,6 +21,9 @@ int main() {
         std::cout << "Failed to initialize OpenGL context" << std::endl;
         return -1;
     }
+
+    // Define the viewport dimensions (must be done after OpenGL is loaded)
+    glViewport(0, 0, WIDTH, HEIGHT);
 
     // Game loop
     while (window.shouldClose()) {

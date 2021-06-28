@@ -21,9 +21,6 @@ Window::Window(const int WIDTH,
         throw std::runtime_error("Failed to create GLFW window");
     }
 
-    // Define the viewport dimensions
-    glViewport(0, 0, WIDTH, HEIGHT);
-
     registerKeyboardCallback(initScene.keyboardCallback);
 }
 
