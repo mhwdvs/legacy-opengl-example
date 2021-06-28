@@ -11,7 +11,7 @@ endif()
 execute_process(COMMAND  "pip install .") # install python requirements
 
 add_subdirectory(glad/cmake)
-glad_add_library(gladlib SHARED API gl:core=1.2)
+glad_add_library(glad SHARED API gl:core=1.2)
 
 # Build glfw
 include_directories(${PROJECT_SOURCE_DIR}/glfw)
