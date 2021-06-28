@@ -9,7 +9,7 @@ void Window::registerKeyboardCallback(GLFWkeyfun callback) {
 Window::Window(const int WIDTH,
                const int HEIGHT,
                const string& WINDOW_NAME,
-               Scene& initScene) {
+               const Scene& initScene) {
     window = glfwCreateWindow(WIDTH,
                               HEIGHT,
                               WINDOW_NAME.c_str(),
