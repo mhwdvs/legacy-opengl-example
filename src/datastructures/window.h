@@ -17,5 +17,5 @@ class Window {
    private:
     Scene scene;
     GLFWwindow* window;
-    void Window::registerKeyboardCallback(GLFWkeyfun callback);
+    void registerKeyboardCallback(GLFWkeyfun callback);
 };

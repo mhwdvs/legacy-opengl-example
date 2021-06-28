@@ -9,6 +9,7 @@ class Scene {
    public:
     Scene();
     vector<Object> objects;
+
     GLFWkeyfun keyboardCallback;
     void draw();
 
