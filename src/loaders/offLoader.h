@@ -1,6 +1,6 @@
 #pragma once
 #include <istream>
-#include "../datastructures/object.h"
+#include "../object.h"
 
 using std::istream;
 

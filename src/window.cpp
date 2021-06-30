@@ -1,15 +1,19 @@
 #include "window.h"
+
+#include <iostream>
 #include <stdexcept>
+#include "scenes/mainmenu/mainScene.h"
 
 void Window::registerKeyboardCallback(GLFWkeyfun callback) {
     // Set the required callback functions
     glfwSetKeyCallback(window, callback);
 }
 
-Window::Window(const int WIDTH,
-               const int HEIGHT,
-               const string& WINDOW_NAME,
-               const Scene& initScene) {
+Window::Window(const int WIDTH, const int HEIGHT, const string& WINDOW_NAME) {
+    // Init GLFW
+    glfwInit();
+
+    // Window context needed before OpenGL is loaded
     window = glfwCreateWindow(WIDTH,
                               HEIGHT,
                               WINDOW_NAME.c_str(),
@@ -21,7 +25,16 @@ Window::Window(const int WIDTH,
         throw std::runtime_error("Failed to create GLFW window");
     }
 
-    registerKeyboardCallback(initScene.keyboardCallback);
+    // Load OpenGL functions, gladLoadGL returns the loaded version, 0 on error.
+    int version = gladLoadGL(glfwGetProcAddress);
+    if (version == 0) {
+        throw std::runtime_error("Failed to initialize OpenGL context");
+    }
+
+    // Define the viewport dimensions (must be done after OpenGL is loaded)
+    glViewport(0, 0, WIDTH, HEIGHT);
+
+    setScene(constructMainScene());
 }
 
 void Window::mainLoop() {
@@ -30,10 +43,20 @@ void Window::mainLoop() {
     glfwPollEvents();
 
     // draw the scene
-    scene.draw();
+    scene->draw();
 
     // Swap the screen buffers
     glfwSwapBuffers(window);
+}
+
+void Window::setScene(Scene* incScene) {
+    scene = incScene;
+    registerKeyboardCallback(scene->keyboardCallback);
+}
+
+Window::~Window() {
+    // Terminates GLFW, clearing any resources allocated by GLFW.
+    glfwTerminate();
 }
 
 bool Window::shouldClose() {

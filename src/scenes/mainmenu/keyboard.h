@@ -1,5 +1,5 @@
 #pragma once
-#include "glFuncs.h"
+#include "../../glFuncs.h"
 
 void key_callback(GLFWwindow* window,
                   int key,

@@ -1,21 +1,21 @@
 #pragma once
 #include <string>
-#include "scene.h"
+#include "glFuncs.h"
+#include "scenes/scene.h"
 
 using std::string;
 
 class Window {
    public:
-    Window(const int WIDTH,
-           const int HEIGHT,
-           const string& WINDOW_NAME,
-           const Scene& initScene);
-    void setScene(const Scene& incScene);
+    Window(const int WIDTH, const int HEIGHT, const string& WINDOW_NAME);
+    ~Window();
+    void setScene(Scene* incScene);
     void mainLoop();
     bool shouldClose();
 
    private:
-    Scene scene;
+    Scene* scene;
     GLFWwindow* window;
+
     void registerKeyboardCallback(GLFWkeyfun callback);
 };

@@ -1,6 +1,4 @@
-file(GLOB SOURCES CONFIGURE_DEPENDS "*.h" "*.cpp" 
-                                    "datastructures/*.h" "datastructures/*.cpp" 
-                                    "loaders/*.h" "loaders/*.cpp")
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "*.h" "*.cpp")
 
 # Add executable
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
