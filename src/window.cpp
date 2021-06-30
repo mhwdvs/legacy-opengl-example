@@ -9,7 +9,10 @@ void Window::registerKeyboardCallback(GLFWkeyfun callback) {
     glfwSetKeyCallback(window, callback);
 }
 
-Window::Window(const int WIDTH, const int HEIGHT, const string& WINDOW_NAME) {
+Window::Window(const int WIDTH,
+               const int HEIGHT,
+               const string& WINDOW_NAME,
+               Scene* incScene) {
     // Init GLFW
     glfwInit();
 
@@ -34,7 +37,7 @@ Window::Window(const int WIDTH, const int HEIGHT, const string& WINDOW_NAME) {
     // Define the viewport dimensions (must be done after OpenGL is loaded)
     glViewport(0, 0, WIDTH, HEIGHT);
 
-    setScene(constructMainScene());
+    setScene(incScene);
 }
 
 void Window::mainLoop() {

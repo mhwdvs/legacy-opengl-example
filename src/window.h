@@ -7,7 +7,10 @@ using std::string;
 
 class Window {
    public:
-    Window(const int WIDTH, const int HEIGHT, const string& WINDOW_NAME);
+    Window(const int WIDTH,
+           const int HEIGHT,
+           const string& WINDOW_NAME,
+           Scene* incScene);
     ~Window();
     void setScene(Scene* incScene);
     void mainLoop();
