@@ -1,4 +1,9 @@
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "*.h" "*.cpp")
+set(SOURCES "main.cpp" 
+            "glFuncs.h" 
+            "object.cpp" "object.h"
+            "window.cpp" "window.h")
+add_subdirectory(loaders)
+add_subdirectory(scenes)
 
 # Add executable
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
@@ -10,9 +15,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME}_lib glad glfw)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# Output glad DLL to this dir
-if(WIN32) #or CYGWIN) 
-    set_target_properties(glad PROPERTIES
-                          RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-    )
-endif()
+# Output glad lib to this dir
+set_target_properties(glad PROPERTIES
+                        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+)

@@ -1,0 +1,2 @@
+set(SOURCES ${SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}"/mainScene.cpp" ${CMAKE_CURRENT_SOURCE_DIR}"/mainScene.h"
+                       ${CMAKE_CURRENT_SOURCE_DIR}"/keyboard.cpp" ${CMAKE_CURRENT_SOURCE_DIR}"/keyboard.h" PARENT_SCOPE)
