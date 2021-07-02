@@ -1,13 +1,35 @@
 #include "mainScene.h"
+
 #include <memory>
+
+#include "../../glFuncs.h"
+#include "../../loaders/fileIO.h"
+#include "../../loaders/offLoader.h"
 #include "keyboard.h"
 
-void draw() {
+void MainScene::draw() {
     // Clear the colorbuffer
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    // draw objects
+    for (auto object : objects) {
+    }
+
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-Scene* constructMainScene() {
-    return new Scene(draw, key_callback);
+void MainScene::keyboardCallback(GLFWwindow* window,
+                                 int key,
+                                 int scancode,
+                                 int action,
+                                 int mode) {
+    key_callback(window, key, scancode, action, mode);
+}
+
+MainScene::MainScene() {
+    // construct camera
+    glMatrixMode(GL_PROJECTION);
+
+    // load objects
+    objects.push_back(readOFFFile(openFile("res/off/unitcube.off")));
 }

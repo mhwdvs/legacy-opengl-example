@@ -2,6 +2,14 @@
 #include "../scene.h"
 #include "keyboard.h"
 
-void draw();
+struct MainScene : public Scene {
+   public:
+    MainScene();
 
-Scene* constructMainScene();
+    void draw() override;
+    void keyboardCallback(GLFWwindow* window,
+                          int key,
+                          int scancode,
+                          int action,
+                          int mode) override;
+};

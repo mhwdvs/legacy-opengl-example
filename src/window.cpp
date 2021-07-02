@@ -54,7 +54,6 @@ void Window::mainLoop() {
 
 void Window::setScene(Scene* incScene) {
     scene = incScene;
-    registerKeyboardCallback(scene->keyboardCallback);
 }
 
 Window::~Window() {
