@@ -1,6 +1,5 @@
 #pragma once
-#include "../scene.h"
-#include "keyboard.h"
+#include "../../scene.h"
 
 struct MainScene : public Scene {
    public:

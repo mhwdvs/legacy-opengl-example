@@ -1,7 +1,9 @@
 set(SOURCES "main.cpp" 
             "glFuncs.h" 
+            "scene.h"
             "object.cpp" "object.h"
-            "window.cpp" "window.h")
+            "window.cpp" "window.h"
+            "camera.cpp" "camera.h")
 add_subdirectory(loaders)
 add_subdirectory(scenes)
 

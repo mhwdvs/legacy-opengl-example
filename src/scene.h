@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
-#include "../glFuncs.h"
-#include "../object.h"
+
+#include "camera.h"
+#include "glFuncs.h"
+#include "object.h"
 
 using std::string;
 
@@ -16,6 +18,7 @@ class Scene {
 
    protected:
     vector<Object> objects;
+    Camera camera;
 
    private:
     void loadObjFromFile(const string& FILE_NAME);

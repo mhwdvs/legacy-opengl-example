@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "glFuncs.h"
-#include "scenes/scene.h"
+#include "scene.h"
 
 using std::string;
 
