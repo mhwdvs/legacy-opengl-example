@@ -12,24 +12,27 @@ Alternatively, you can run `git submodules init && git submodules update` if you
 
 ## Dependencies
 
-Generally;
+The following python3 dependencies must be installed on all platforms;
 
-- Python >= 3.6 (for glad build generator)
-- CMake >= 3.15
-- git
+`pip3 install jinja2`
 
 ### Linux
 
+Ubuntu/Debian:
+
 - `sudo apt install git cmake ninja-build xorg-dev libwayland-dev wayland-protocols extra-cmake-modules build-essential autoconf automake libtool pkg-config libasound2-dev libpulse-dev libaudio-dev libjack-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxinerama-dev libxxf86vm-dev libxss-dev libgl1-mesa-dev libdbus-1-dev libudev-dev libgles2-mesa-dev libegl1-mesa-dev libibus-1.0-dev fcitx-libs-dev libsamplerate0-dev libsndio-dev libwayland-dev libxkbcommon-dev libdrm-dev libgbm-dev`
+
+Fedora:
+
+- `sudo dnf install git cmake clang libX11-devel libXrandr-devel libXinerama-devel libXcursor-devel libXi-devel`
 
 ### MacOS
 
-TODO
+TODO (generally install the packages/libraries that CMake complains are missing using typical MacOS tooling [eg `brew`])
 
 ### Windows
 
-Those mentioned above, as well as;
-- MSVC
+- MSVC compiler
 
 ## Building
 
@@ -48,8 +51,6 @@ Build with Ninja
 ### Windows
 
 `cd build/src/ && Main.exe`
-
-## Using unsupported software
 
 ## Compatability
 

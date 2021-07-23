@@ -1,10 +1,8 @@
 #include "offLoader.h"
-#include <fstream>
 #include <sstream>
 #include <string>
 
 using std::getline;
-using std::istream;
 using std::string;
 using std::stringstream;
 

@@ -31,5 +31,6 @@ MainScene::MainScene() {
     glMatrixMode(GL_PROJECTION);
 
     // load objects
-    objects.push_back(readOFFFile(openFile("res/off/unitcube.off")));
+    auto file = openFile("res/off/unitcube.off"); // can't be inline as it needs to be a lvalue
+    objects.push_back(readOFFFile(file));
 }

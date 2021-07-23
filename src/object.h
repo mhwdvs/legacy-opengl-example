@@ -2,6 +2,7 @@
 #include <vector>
 
 using std::vector;
+using std::size_t;
 
 class Object {
    public:
