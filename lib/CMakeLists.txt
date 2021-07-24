@@ -16,3 +16,7 @@ glad_add_library(glad SHARED API gl:core=1.2)
 # Build glfw
 include_directories(${PROJECT_SOURCE_DIR}/glfw)
 add_subdirectory(glfw)
+
+# Add glm lib (header only, no build required)
+include_directories(${PROJECT_SOURCE_DIR}/glm)
+add_subdirectory(glm)

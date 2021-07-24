@@ -6,7 +6,7 @@ Comes preconfigured with Google Test/CTest and basic project structure
 
 ## Cloning
 
-This project utilises *git submodules*. To both clone this and the required submodules run `git clone --recurse-submodules https://github.com/mhwdvs/sdl2-boilerplate`
+This project utilises *git submodules*. To both clone this **and the required submodules** run `git clone --recurse-submodules https://github.com/mhwdvs/sdl2-boilerplate`
 
 Alternatively, you can run `git submodules init && git submodules update` if you have already cloned the repo without submodules
 

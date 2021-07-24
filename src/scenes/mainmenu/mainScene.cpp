@@ -6,6 +6,7 @@
 #include "../../loaders/fileIO.h"
 #include "../../loaders/offLoader.h"
 #include "keyboard.h"
+#include <glm/vec3.hpp>
 
 void MainScene::draw() {
     // Clear the colorbuffer
